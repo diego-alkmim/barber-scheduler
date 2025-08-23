@@ -30,25 +30,23 @@ model Barbershop {
 }
 
 model BarbershopService {
-  id                String     @id @default(uuid())
-  barbershopId      String
-  barbershop        Barbershop @relation(fields: [barbershopId], references: [id])
-  name              String
-  description       String
-  durationInMinutes Int
-  price             Decimal    @db.Decimal(10, 2)
-  bookings          Booking[]
-  createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @updatedAt
+  id           String     @id @default(uuid())
+  name         String
+  description  String
+  imageUrl     String
+  price        Decimal    @db.Decimal(10, 2)
+  barbershopId String
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  bookings     Booking[]
 }
 
 model Booking {
-  id                  String            @id @default(uuid())
-  userId              String
-  user                User              @relation(fields: [userId], references: [id])
-  barbershopServiceId String
-  barbershopService   BarbershopService @relation(fields: [barbershopServiceId], references: [id])
-  scheduledAt         DateTime
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
+  id        String            @id @default(uuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
+  serviceId String
+  service   BarbershopService @relation(fields: [serviceId], references: [id])
+  date      DateTime
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
 }
