@@ -10,7 +10,7 @@ const Header = () => {
         <Image alt="FSW Barber" src="/logo.png" height={18} width={120} />
         <Button
           aria-label="Abrir menu lateral"
-          data-testId="button-menu-home"
+          data-testid="button-menu-home"
           size="icon"
           variant="outline"
         >

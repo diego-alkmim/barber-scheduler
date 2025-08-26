@@ -19,15 +19,15 @@ const Home = async () => {
   return (
     <div>
       <Header />
-      <div className="p-5">
+      <div data-testid="greeting-home" className="p-5">
         {/* TEXTO */}
-        <h2 className="text-xl font-bold">Olá, Diego!</h2>
+        <h2 className="text-xl font-bold">Olá, Adriana!</h2>
         <p>Domingo, 23 de Agosto.</p>
 
         {/* BUSCA */}
         <div className="flex items-center gap-2 mt-6">
           <Input placeholder="Faça sua busca..." />
-          <Button data-testId="button-search-home">
+          <Button data-testid="button-search-home">
             <SearchIcon />
           </Button>
         </div>
@@ -36,7 +36,7 @@ const Home = async () => {
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option) => (
             <Button
-              data-testId={`button-quick-search-${option.title.toLowerCase()}`}
+              data-testid={`button-quick-search-${option.title.toLowerCase()}`}
               className="gap-2"
               variant="secondary"
               key={option.title}
@@ -55,6 +55,7 @@ const Home = async () => {
         {/* IMAGEM */}
         <div className="relative w-full h-[150px] mt-6">
           <Image
+            data-testid="banner-home"
             alt="Agende nos melhores com FSW Barber"
             src="/banner-01.png"
             fill
@@ -70,7 +71,11 @@ const Home = async () => {
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            <BarbershopItem
+              key={barbershop.id}
+              barbershop={barbershop}
+              origem="recommended"
+            />
           ))}
         </div>
 
@@ -79,7 +84,11 @@ const Home = async () => {
         </h2>
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
           {popularBarbershops.map((barbershop) => (
-            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+            <BarbershopItem
+              key={barbershop.id}
+              barbershop={barbershop}
+              origem="popular"
+            />
           ))}
         </div>
       </div>
